@@ -1,7 +1,5 @@
 require 'csv'
 require 'open-uri'
-require 'set'
-#require 'pry'
 
 class MBTASubway
 
@@ -51,8 +49,3 @@ class MBTASubway
   end
 
 end
-
-
-# red_line = MBTASubway.new('red')
-# puts red_line.data
-#binding.pry
