@@ -2,7 +2,7 @@
 
 require 'sinatra'
 require_relative 'mbta_subway.rb'
-require 'pry'
+#require 'pry'
 
 keep_columns = ['Destination', 'Stop', 'MinutesAway']
 
