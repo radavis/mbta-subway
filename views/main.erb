@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MBTA Departures</title>
+    <link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css'/>
+    <link rel='stylesheet' type='text/css' href='/css/bootstrap-theme.min.css'/>
+    <link rel='stylesheet' type='text/css' href='/css/stylesheet.css'/>
+  </head>
+  <body>
+
+    <div class="navbar navbar-fixed-top" role="navigation">
+      <div class="navbar-brand">MBTA Subway Data</div>
+
+      <div class="navbar-form navbar-right">
+        <a href="/blue"><button class="btn btn-primary">blue line</button></a>
+        <a href="/orange"><button class="btn btn-warning">orange line</button></a>
+        <a href="/red"><button class="btn btn-danger">red line</button></a>
+      </div>
+    </div>
+
+    <% if !@results.nil? %>
+
+      <table class="table table-striped">
+        <tr>
+          <% @results.first.keys.each do |key| %>
+            <th class="table-header"><%= key %></th>
+          <% end %>
+        </tr>
+
+        <% @results.each do |row| %>
+          <tr class="table-row">
+            <% row.each do |key, value| %>
+              <td class="<%= key.downcase %>"><%= value %></td>
+            <% end %>
+          </tr>
+
+        <% end %>
+      <table>
+
+    <% end %>
+
+    <div class="panel-footer">
+      <div class="msg pull-left">lateness displayed in minutes</div>&nbsp;
+      <div class="msg pull-right">last updated: <%= @timestamp %></div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"
+            type="text/javascript"></script>
+
+    <script src="/javascripts/bootstrap.min.js"
+            type="text/javascript"></script>
+
+    <script src="/javascripts/main.js"
+            type="text/javascript"></script>
+  </body>
+</html>
