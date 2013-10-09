@@ -18,7 +18,8 @@ get '/:line' do
     @results << line
   end
 
-  @results.sort_by { |result| result['Stop'] }
+  @results.sort_by! { |result| result['Stop'] }
+  @results.sort_by! { |result| result['Destination'] }
 
   erb :main
 end
@@ -37,7 +38,7 @@ get '/:line/:stop' do
   end
 
   @results.sort_by! { |result| result['MinutesAway'] }
-
+  @results.sort_by! { |result| result['Destination'] }
 
   #binding.pry
   erb :main
