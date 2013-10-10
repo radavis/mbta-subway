@@ -21,11 +21,8 @@ def format_subway_data(line_name, stop_name=nil)
     end
   end
 
-  @results.sort! do |r1, r2|
-    comp = (r1['Destination'] <=> r2['Destination'])
-    comp.zero? ? comp = (r1['Stop'] <=> r2['Stop']) : comp
-    comp.zero? ? comp = (r1['MinutesAway'] <=> r2['MinutesAway']) : comp
-  end
+  @results.sort_by! {|r| [r['Destination'], r['Stop'], r['MinutesAway']]}
+
 end
 
 get '/' do
