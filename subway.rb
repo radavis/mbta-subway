@@ -2,44 +2,44 @@
 
 require 'sinatra'
 require_relative 'mbta_subway.rb'
-#require 'pry'
+require 'pry'
 
-keep_columns = ['Destination', 'Stop', 'MinutesAway']
+def format_subway_data(line_name, stop_name=nil)
+  keep_columns = ['Destination', 'Stop', 'MinutesAway']
 
-get '/:line' do
-  # select a list of stops alphabetically (or by stop location?)
-
-  line_data = MBTASubway.new(params[:line]).data
+  line_data = MBTASubway.new(line_name).data
   @timestamp = line_data.first['CurrentTime'].strftime("%I:%M%p %m/%d/%Y")
 
   @results = []
   line_data.each do |line|
     line.keep_if { |k, v| keep_columns.include?(k) }
-    @results << line
-  end
 
-  @results.sort_by! { |result| result['Stop'] }
-  @results.sort_by! { |result| result['Destination'] }
+    #binding.pry
+    if !stop_name.nil? and line['Stop'].downcase.include?(stop_name)
+      @results << line
 
-  erb :main
-end
-
-get '/:line/:stop' do
-
-  line_data = MBTASubway.new(params[:line]).data
-  @timestamp = line_data.first['CurrentTime'].strftime("%I:%M%p %m/%d/%Y")
-
-  @results = []
-  line_data.each do |line|
-    if line['Stop'].downcase.include?(params[:stop])
-      line.keep_if { |k, v| keep_columns.include?(k) }
+    elsif stop_name.nil?
       @results << line
     end
   end
 
-  @results.sort_by! { |result| result['MinutesAway'] }
-  @results.sort_by! { |result| result['Destination'] }
+  @results.sort! do |r1, r2|
+    comp = (r1['Destination'] <=> r2['Destination'])
+    comp.zero? ? comp = (r1['Stop'] <=> r2['Stop']) : comp
+    comp.zero? ? comp = (r1['MinutesAway'] <=> r2['MinutesAway']) : comp
+  end
+end
 
-  #binding.pry
+get '/' do
+  erb :main
+end
+
+get '/:line' do
+  format_subway_data(params[:line].downcase)
+  erb :main
+end
+
+get '/:line/:stop' do
+  format_subway_data(params[:line].downcase, params[:stop].downcase)
   erb :main
 end
