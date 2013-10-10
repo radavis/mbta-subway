@@ -2,7 +2,6 @@
 
 require 'sinatra'
 require_relative 'mbta_subway.rb'
-require 'pry'
 
 def format_subway_data(line_name, stop_name=nil)
   keep_columns = ['Destination', 'Stop', 'MinutesAway']
@@ -14,7 +13,6 @@ def format_subway_data(line_name, stop_name=nil)
   line_data.each do |line|
     line.keep_if { |k, v| keep_columns.include?(k) }
 
-    #binding.pry
     if !stop_name.nil? and line['Stop'].downcase.include?(stop_name)
       @results << line
 
