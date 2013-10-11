@@ -8,24 +8,24 @@
   </head>
   <body>
 
-  <div class="row"><div class="col-xs-12">
-    <table class="table">
-      <% @subway_stops.each do |line, stops| %>
-        <% stops.sort! %>
-        <% stops.each do |stop| %>
-          <tr class="table-row" color="<%= line %>">
-            <td class="btn btn-lg"><%= stop %></td>
-          </tr>
+  <div class="row">
+    <div class="col-xs-12">
+
+      <table class="table">
+        <% @subway_stops.each do |line, stops| %>
+          <% stops.sort! %>
+          <% stops.each do |stop| %>
+            <tr class="table-row" color="<%= line %>">
+              <td class="btn btn-lg"><%= stop %></td>
+            </tr>
+          <% end %>
         <% end %>
-      <% end %>
 
-    <table>
+        <tr>last updated: <%= @timestamp %></tr>
 
-    <div class="panel-footer">
-      last updated: <%= @timestamp %>
+      </table>
     </div>
-
-  </div></div>
+  </div>
 
     <script src="http://code.jquery.com/jquery-latest.min.js"
             type="text/javascript"></script>
