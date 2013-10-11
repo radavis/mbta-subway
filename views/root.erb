@@ -8,18 +8,6 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fixed-top" role="navigation">
-      <div class="navbar-brand">MBTA Next Train</div>
-
-      <div class="navbar-form navbar-right">
-        <!--
-        <a href="/blue"><button class="btn btn-primary">blue line</button></a>
-        <a href="/orange"><button class="btn btn-warning">orange line</button></a>
-        <a href="/red"><button class="btn btn-danger">red line</button></a>
-        -->
-      </div>
-    </div>
-
     <table class="table table-striped">
       <% @subway_stops.each do |line, stops| %>
         <% stops.sort! %>
