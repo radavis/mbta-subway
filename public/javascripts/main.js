@@ -10,7 +10,7 @@ $(document).ready(function() {
   };
 
   $('tr').on('click', function() {
-    window.location = "http://localhost:4567/" + $(this).attr('color') + "/" + $(this).children('td').html() ;
+    window.location = "http://mbta-subway.herokuapp.com/" + $(this).attr('color') + "/" + $(this).children('td').html() ;
   });
 
 });
