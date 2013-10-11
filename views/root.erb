@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Next Train</title>
+    <title>lasttrain</title>
     <link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css'/>
     <link rel='stylesheet' type='text/css' href='/css/bootstrap-theme.min.css'/>
     <link rel='stylesheet' type='text/css' href='/css/stylesheet.css'/>
@@ -14,7 +14,7 @@
         <% stops.sort! %>
         <% stops.each do |stop| %>
           <tr class="table-row" color="<%= line %>">
-            <td class="btn btn-lg"><%= stop.gsub(/\//, ' ') %></td>
+            <td class="btn btn-lg"><%= stop %></td>
           </tr>
         <% end %>
       <% end %>
