@@ -2,14 +2,12 @@
   width: 100%
 }
 
-@media (max-width: 780px) {
-  body {
-    font-size: 2em;
-  }
+body {
+  font-size: 2em;
+}
 
-  .btn {
-   -webkit-font-size: 2em;
-   -moz-font-size: 2em;
-   font-size: 2em;
-  }
+.btn {
+ -webkit-font-size: 2em;
+ -moz-font-size: 2em;
+ font-size: 2em;
 }

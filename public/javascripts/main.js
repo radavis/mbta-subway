@@ -10,7 +10,7 @@ $(document).ready(function() {
   };
 
   $('tr').on('click', function() {
-    window.location = window.location + $(this).attr('color') + "/" + $(this).children('td').html() ;
+    window.location = window.location + $(this).attr('color') + "/" + $(this).children('td').html().split(' ')[0] ;
   });
 
 });
