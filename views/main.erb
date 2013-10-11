@@ -8,10 +8,7 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fixed-top" role="navigation">
-      <div class="navbar-brand">MBTA Next Train</div>
-    </div>
-
+  <div class="row"><div class="col-xs-12">
     <% if @results and !@results.empty? %>
 
       <table class="table table-striped">
@@ -34,9 +31,9 @@
     <% end %>
 
     <div class="panel-footer">
-      &nbsp;
-      <div class="msg pull-right">last updated: <%= @timestamp %></div>
+      last updated: <%= @timestamp %>
     </div>
+  </div></div>
 
     <script src="http://code.jquery.com/jquery-latest.min.js"
             type="text/javascript"></script>

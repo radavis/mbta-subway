@@ -8,6 +8,7 @@
   </head>
   <body>
 
+  <div class="row"><div class="col-xs-12">
     <table class="table">
       <% @subway_stops.each do |line, stops| %>
         <% stops.sort! %>
@@ -21,8 +22,10 @@
     <table>
 
     <div class="panel-footer">
-      <div class="msg">last updated: <%= @timestamp %></div>
+      last updated: <%= @timestamp %>
     </div>
+
+  </div></div>
 
     <script src="http://code.jquery.com/jquery-latest.min.js"
             type="text/javascript"></script>

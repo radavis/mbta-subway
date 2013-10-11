@@ -10,7 +10,7 @@ $(document).ready(function() {
   };
 
   $('tr').on('click', function() {
-    window.location = "http://mbta-subway.herokuapp.com/" + $(this).attr('color') + "/" + $(this).children('td').html() ;
+    window.location = window.location.origin + "/" + $(this).attr('color') + "/" + $(this).children('td').html() ;
   });
 
 });
