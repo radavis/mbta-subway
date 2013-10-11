@@ -11,7 +11,7 @@ class MBTASubway
 
   UPDATE_FREQUENCY = 30  # seconds
 
-  attr_reader :color, :data
+  attr_reader :color, :data, :timestamp
 
   def initialize(color)
     @color = color
@@ -34,6 +34,7 @@ class MBTASubway
                 col_sep: ',') do |row|
 
       row["CurrentTime"] = Time.at(row["CurrentTime"])
+      @timestamp = row["CurrentTime"]
       row["PosTimestamp"] = Time.at(row["PosTimestamp"]) if row["PosTimestamp"]
       row["MinutesAway"] = (row["SecondsAway"] / 60.0).round
       @data << row.to_hash

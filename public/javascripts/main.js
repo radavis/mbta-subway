@@ -1,23 +1,16 @@
 $(document).ready(function() {
-
-  // colorize rows using bootstrap classes
-  statuses = {
-    "now boarding": "success",
-    "all aboard": "danger",
-    "delayed": "warning",
-    "cancelled": "danger",
-    "info to follow": "warning",
-    "late": "warning",
-    "arriving": "success",
-    "arrived": "success",
-    "departed": "danger",
-    "hold": "warning",
-    "end": "danger"
+  colors = {
+    "blue": "primary",
+    "orange": "warning",
+    "red": "danger",
   };
 
-  for (var status in statuses) {
-    var value = statuses[status];
-    $('td[status="' + status + '"]').parent('tr').addClass(value);
+  for (var color in colors) {
+    $('tr[color="' + color + '"]').children('td').addClass('btn-' + colors[color]);
   };
+
+  $('tr').on('click', function() {
+    window.location = "http://localhost:4567/" + $(this).attr('color') + "/" + $(this).children('td').html() ;
+  });
 
 });

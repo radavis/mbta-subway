@@ -21,12 +21,19 @@ def format_subway_data(line_name, stop_name=nil)
     end
   end
 
-  @results.sort_by! {|r| [r['Destination'], r['Stop'], r['MinutesAway']]}
+  @results.sort_by! { |r| [r['Destination'], r['Stop'], r['MinutesAway']] }
 
 end
 
 get '/' do
-  erb :main
+  @subway_stops = {}
+  [:blue, :orange, :red].each do |line|
+    subway_info = MBTASubway.new(line)
+    @subway_stops[line] = subway_info.stops
+    @timestamp = subway_info.timestamp
+  end
+
+  erb :root
 end
 
 get '/:line' do
