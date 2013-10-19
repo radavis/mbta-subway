@@ -25,7 +25,9 @@ class MBTASubway
   end
 
   def update
-    grab_csv if (Time.now - File.mtime(@local_csv)).to_i > UPDATE_FREQUENCY
+    if !File.exists(@local_csv) or (Time.now - File.mtime(@local_csv)).to_i > UPDATE_FREQUENCY
+      grab_csv
+    end
 
     @data = []
     CSV.foreach(@local_csv,
