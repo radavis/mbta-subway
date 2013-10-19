@@ -25,9 +25,7 @@ class MBTASubway
   end
 
   def update
-    if !File.exists?(@local_csv) or (Time.now - File.mtime(@local_csv)).to_i > UPDATE_FREQUENCY
-      grab_csv
-    end
+    grab_csv if !File.exists?(@local_csv) or (Time.now - File.mtime(@local_csv)).to_i > UPDATE_FREQUENCY
 
     @data = []
     CSV.foreach(@local_csv,
@@ -46,7 +44,7 @@ class MBTASubway
   private
   def grab_csv
     remote_data = open(@remote_csv).read
-    departures_csv = File.open(@local_csv, "w")
+    departures_csv = File.open(@local_csv, "w+")
     departures_csv.write(remote_data)
     departures_csv.close
   end
