@@ -43,6 +43,8 @@ class MBTASubway
 
   private
   def grab_csv
+    directory = @local_csv.split('/').first
+    Dir::mkdir(directory) unless File.exists?(directory)
     remote_data = open(@remote_csv).read
     departures_csv = File.open(@local_csv, "w+")
     departures_csv.write(remote_data)
