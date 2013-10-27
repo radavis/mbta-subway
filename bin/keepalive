@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+require 'uri'
+require 'net/http'
+puts "keepalive: visiting mbta-subway.herokuapp.com"
+uri = URI.parse('http://mbta-subway.herokuapp.com/')
+Net::HTTP.get(uri)
