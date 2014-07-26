@@ -1,50 +1,21 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>lasttrain</title>
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap.min.css'/>
-    <link rel='stylesheet' type='text/css' href='/css/bootstrap-theme.min.css'/>
-    <link rel='stylesheet' type='text/css' href='/css/stylesheet.css'/>
-  </head>
-  <body>
+<table class="table table-striped">
+  <tr>
+    <% @results.first.keys.each do |key| %>
+      <th class="table-header"><%= key %></th>
+    <% end %>
+  </tr>
 
-  <div class="row">
-    <div class="col-xs-12">
+  <% @results.each do |row| %>
+    <tr class="table-row">
+      <% row.each do |key, value| %>
+        <td class="<%= key.downcase %>"><%= value %></td>
+      <% end %>
+    </tr>
+  <% end %>
 
-      <table class="table table-striped">
-        <tr>
-          <% @results.first.keys.each do |key| %>
-            <th class="table-header"><%= key %></th>
-          <% end %>
-        </tr>
-
-        <% @results.each do |row| %>
-          <tr class="table-row">
-            <% row.each do |key, value| %>
-              <td class="<%= key.downcase %>"><%= value %></td>
-            <% end %>
-          </tr>
-        <% end %>
-
-        <tr class="table-row">
-          <td>last updated:</td>
-          <td><%= @timestamp %></td>
-          <td></td>
-        </tr>
-
-      <table>
-
-    </div>
-  </div>
-
-  <script src="http://code.jquery.com/jquery-latest.min.js"
-          type="text/javascript"></script>
-
-  <script src="/javascripts/bootstrap.min.js"
-          type="text/javascript"></script>
-
-  <script src="/javascripts/google-analytics.js"
-          type="text/javascript"></script>
-
-  </body>
-</html>
+  <tr class="table-row">
+    <td>last updated:</td>
+    <td><%= @timestamp %></td>
+    <td></td>
+  </tr>
+<table>
