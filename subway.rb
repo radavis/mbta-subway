@@ -1,5 +1,3 @@
-# subway.rb
-
 require 'sinatra'
 require_relative 'mbta_subway.rb'
 
